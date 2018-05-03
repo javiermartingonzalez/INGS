@@ -10,7 +10,7 @@ Cada versión de cada archivo para el historial del proyecto se despliega de for
 
 A continuación vamos a obtener desde GitHub el repositorio:
 
-$ git clone https://github.com/javiermartingonzalez/INGS.git
+*$ git clone https://github.com/javiermartingonzalez/INGS.git*
 
 # Recuperar un archivo o todo el repositorio a una versión anterior
 
@@ -22,30 +22,33 @@ Después de eso decides que ese archivo necesita un “último ajuste” y final
 
 Podemos recuperar el archivo (prueba.txt en los ejemplos siguientes) al estado en el que estaba antes de la modificación, es decir al estado en el que estaba en el último “commit” para eso utiliza el comando git checkout al último commit conocido que en este caso está en HEAD:
 
-$ git checkout HEAD prueba.txt
+*$ git checkout HEAD prueba.txt*
 
 Pero si esa versión no es buena, o si quieres volver el archivo en cuestión no a esa versión si no a una anterior en el tiempo, primero deberemos comprobar en el registro log de ese directorio de git los “commits” realizados para poder escoger a la versión que deseamos. Echamos un vistazo a los logs con este comando:
 
-$ git log --oneline
+*$ git log --oneline*
 
 Lo que nos dará una salida “algo” similar a esta (con las lógicas diferencias de “commits”, etc…)
 
 79a4e5f commit prueba
+
 f449007 segundo commit
-55df4c2 Primer commit del proyecto.
+
+55df4c2 Primer commit del proyecto
 
 Imaginemos que queremos devolver el archivo prueba.txt a la versión como estaba en nuestro primer commit del proyecto. Para ello escribiremos el siguiente comando
 
-$ git checkout 55df4c2 prueba.txt
+*$ git checkout 55df4c2 prueba.txt*
 
 Ahora la versión antigua del archivo ha sido restaurada en el directorio de trabajo. Puedes comprobar el estado del directorio de trabajo mediante el comando git status. No olvides que una vez restaurado el archivo, es necesario volver a añadir el archivo y volver a hacer un “commit” ya que el archivó cambió.
 
-$ git add prueba.txt
-$ git commit -m 'restaurar prueba.txt al estado del primer commit.'
+*$ git add prueba.txt*
+
+*$ git commit -m 'restaurar prueba.txt al estado del primer commit.'*
 
 Comprobemos en el log de Git que efectivamente todo ha ido como queríamos:
 
-$ git log --oneline
+*$ git log --oneline*
 
 d512580 restaurar prueba.txt al estado del primer commit.
 79a4e5f commit prueba
@@ -54,6 +57,6 @@ f449007 segundo commit
 
 También podemos llevar no sólo un archivo a un punto predeterminado, si no todos los archivos del repositorio, para ello escribimos:
 
-$ git checkout 55df4c2
+*$ git checkout 55df4c2*
 
 Al hacer esto, tu repositorio va atrás en el tiempo por completo, así que si ahora empiezas a trabajar sobre él podrías destruir tu futuro trabajo. Por defecto Git asume que no es eso lo que quieres hacer, así que separa donde se desarrolla el trabajo HEAD del proyecto y te deja empezar a trabajar, creando una nueva rama. Sin embargo en este caso solo se pide acceso a versiones anteriores, por lo tanto aquí finalizan las instrucciones sobre cómo moverse por los commit.
